@@ -1,9 +1,11 @@
 import Heading from "../components/Heading";
+import MovieList from "../components/MovieList";
 
 export default function Home() {
   return (
     <main>
-      <Heading>🔱Atlantis Capstone Template🔱</Heading>
+      <Heading>Marvel Movie App</Heading>
+      <MovieList />
     </main>
   );
 }
