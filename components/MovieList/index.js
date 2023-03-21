@@ -1,6 +1,7 @@
 import React from "react";
 import useSWR from "swr";
 import Image from "next/image";
+import Link from "next/link";
 
 const fetcher = (url) => fetch(url).then((res) => res.json());
 
@@ -18,10 +19,10 @@ export default function MovieList() {
   }
 
   return (
-    <ul>
+    <div>
       {movies.data
         .map((movie) => (
-          <li key={movie._id}>
+          <Link href={`/${movie.id}`} key={movie.id}>
             <h2>{movie.title}</h2>
             <p>{movie.release_date}</p>
             <Image
@@ -30,9 +31,9 @@ export default function MovieList() {
               width={200}
               alt={movie.title}
             />
-          </li>
+          </Link>
         ))
         .reverse()}
-    </ul>
+    </div>
   );
 }
