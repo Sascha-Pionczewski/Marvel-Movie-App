@@ -1,8 +1,8 @@
 import { useRouter } from "next/router";
 import useSWR from "swr";
-import Image from "next/image";
 import Link from "next/link";
 import VideoComponent from "../components/VideoComponent";
+import Image from "next/image";
 
 const fetcher = (url) => fetch(url).then((res) => res.json());
 
@@ -25,9 +25,10 @@ const DetailsPage = () => {
   return (
     <div>
       <h1>{movie.title}</h1>
-      <VideoComponent url={movie.trailer_url} cover={movie.cover_url} />
+      <VideoComponent url={movie.trailer_url} />
       <h2>Description:</h2>
       <p>{movie.overview}</p>
+      <Image src={movie.cover_url} alt={movie.title} width={200} height={300} />
       <h3>Related Movies</h3>
       <ul>
         {movie.related_movies.map((relMovie) => (
