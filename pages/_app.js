@@ -1,5 +1,6 @@
 import GlobalStyle from "../styles";
 import Head from "next/head";
+import NavBar from "../components/NavBar";
 
 export default function App({ Component, pageProps }) {
   return (
@@ -9,6 +10,7 @@ export default function App({ Component, pageProps }) {
         <title>Marvel Movie App</title>
       </Head>
       <Component {...pageProps} />
+      <NavBar />
     </>
   );
 }
