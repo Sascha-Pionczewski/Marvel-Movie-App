@@ -24,10 +24,10 @@ const DetailsPage = () => {
 
   return (
     <div>
-      <h1>{movie.title}</h1>
       <Link href="/">
-        <button>...back home</button>
+        <button>🔙</button>
       </Link>
+      <h1>{movie.title}</h1>
       <VideoComponent url={movie.trailer_url} />
       <h2>Description:</h2>
       <p>{movie.overview}</p>
