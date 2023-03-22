@@ -24,7 +24,7 @@ export default function VideoComponent({ url }) {
   if (!url.includes("players.brightcove.net")) {
     return (
       <>
-        <ReactPlayer url={url} width="100%" height="auto" controls={true} />;
+        <ReactPlayer url={url} width="100%" height="auto" controls={true} />
       </>
     );
   }

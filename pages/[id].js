@@ -24,6 +24,9 @@ const DetailsPage = () => {
 
   return (
     <div>
+      <Link href="/">
+        <button>🔙</button>
+      </Link>
       <h1>{movie.title}</h1>
       <VideoComponent url={movie.trailer_url} />
       <h2>Description:</h2>
@@ -37,9 +40,6 @@ const DetailsPage = () => {
           </Link>
         ))}
       </ul>
-      <Link href="/">
-        <button>...back home</button>
-      </Link>
     </div>
   );
 };
