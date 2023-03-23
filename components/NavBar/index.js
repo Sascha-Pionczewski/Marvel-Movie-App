@@ -39,7 +39,7 @@ const StyledNav = styled.nav`
   padding: 10px;
   box-shadow: 0 -1px 5px rgba(0, 0, 0, 0.1);
   display: flex;
-  justify-content: center;
+  justify-content: space-around;
 `;
 
 const StyledList = styled.ul`

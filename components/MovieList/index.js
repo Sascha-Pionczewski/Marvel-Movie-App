@@ -6,23 +6,19 @@ import Link from "next/link";
 const fetcher = (url) => fetch(url).then((res) => res.json());
 
 export default function MovieList() {
-  const { data: movies, error } = useSWR(
-    "https://mcuapi.herokuapp.com/api/v1/movies",
-    fetcher
-  );
-
+  const { data: movies, error } = useSWR("/api/movies", fetcher);
   if (error) {
     return <div>Failed to load from API</div>;
   }
   if (!movies) {
     return <div>Loading...</div>;
   }
-
+  console.log(movies);
   return (
     <div>
-      {movies.data
+      {movies
         .map((movie) => (
-          <Link href={`/${movie.id}`} key={movie.id}>
+          <Link href={`/${movie.title.replace(/ /g, "-")}`} key={movie.id}>
             <h2>{movie.title}</h2>
             <p>{movie.release_date}</p>
             <Image
