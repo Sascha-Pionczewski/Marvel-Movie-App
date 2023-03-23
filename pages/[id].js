@@ -9,18 +9,17 @@ const fetcher = (url) => fetch(url).then((res) => res.json());
 const DetailsPage = () => {
   const router = useRouter();
   const { id } = router.query;
-
-  const { data: movie, error } = useSWR(
-    `https://mcuapi.herokuapp.com/api/v1/movies/${id}`,
-    fetcher
-  );
+  console.log(id);
+  const { data: movies, error } = useSWR(`/api/movies`, fetcher);
 
   if (error) {
     return <div>Failed to load from API</div>;
   }
-  if (!movie) {
+  if (!movies) {
     return <div>Loading...</div>;
   }
+
+  const movie = movies.find((movie) => movie.title.replace(/ /g, "-") === id);
 
   return (
     <div>
@@ -34,11 +33,14 @@ const DetailsPage = () => {
       <Image src={movie.cover_url} alt={movie.title} width={200} height={300} />
       <h3>Related Movies</h3>
       <ul>
-        {movie.related_movies.map((relMovie) => (
-          <Link href={`/${relMovie.id}`} key={relMovie.id}>
-            <li>{relMovie.title}</li>
-          </Link>
-        ))}
+        {movie.related_movies.map((relMovie) => {
+          const titleWithMinus = relMovie.title.replace(/ /g, "-");
+          return (
+            <Link href={`/${titleWithMinus}`} key={relMovie.id}>
+              <li>{relMovie.title}</li>
+            </Link>
+          );
+        })}
       </ul>
     </div>
   );
