@@ -11,6 +11,9 @@
     "test:watch": "jest --watchAll"
   },
   "dependencies": {
+    "bson": "^5.1.0",
+    "bson-ext": "^4.0.3",
+    "bson-objectid": "^2.0.4",
     "crypto-js": "^4.1.1",
     "dotenv": "^16.0.3",
     "eslint": "8.35.0",

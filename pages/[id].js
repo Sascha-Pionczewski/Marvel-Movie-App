@@ -9,7 +9,7 @@ const fetcher = (url) => fetch(url).then((res) => res.json());
 const DetailsPage = () => {
   const router = useRouter();
   const { id } = router.query;
-  console.log(id);
+
   const { data: movies, error } = useSWR(`/api/movies`, fetcher);
 
   if (error) {
@@ -20,6 +20,9 @@ const DetailsPage = () => {
   }
 
   const movie = movies.find((movie) => movie.title.replace(/ /g, "-") === id);
+  const characterObjects = (movie.characters || []).map((jsonString) =>
+    JSON.parse(jsonString)
+  );
 
   return (
     <div>
@@ -40,6 +43,11 @@ const DetailsPage = () => {
               <li>{relMovie.title}</li>
             </Link>
           );
+        })}
+      </ul>
+      <ul>
+        {characterObjects.map((character) => {
+          return <li key={character._id}>{character.name}</li>;
         })}
       </ul>
     </div>
