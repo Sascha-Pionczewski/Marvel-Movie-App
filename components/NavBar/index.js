@@ -42,10 +42,11 @@ const StyledNav = styled.nav`
   justify-content: space-around;
 `;
 
-const StyledList = styled.ul`
+const StyledList = styled.div`
   list-style-type: none;
   display: flex;
   gap: 20px;
+  margin: 10px;
 `;
 
 const Button = styled.button`
@@ -54,6 +55,5 @@ const Button = styled.button`
   color: white;
   &.active {
     background-color: black;
-  }
   }
 `;
