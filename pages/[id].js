@@ -98,7 +98,11 @@ const DetailsPage = () => {
       </StyledPage>
     );
   } else {
-    return <div>Oh my! No matching movie or character object found.</div>;
+    return (
+      <StyledText>
+        <h1>Oh my! No matching movie or character object found.</h1>
+      </StyledText>
+    );
   }
 };
 
