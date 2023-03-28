@@ -18,6 +18,7 @@ const movieSchema = new Schema({
   post_credit_scenes: { type: Number, required: false },
   imdb_id: { type: Number, required: false },
   related_movies: { type: Array, required: true },
+  characters: { type: Array, required: true },
 });
 
 const Movie = mongoose.models.Movie || mongoose.model("Movie", movieSchema);
