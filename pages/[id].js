@@ -4,6 +4,7 @@ import Link from "next/link";
 import VideoComponent from "../components/VideoComponent";
 import Image from "next/image";
 import styled from "styled-components";
+import Bookmark from "../components/Bookmark";
 
 const fetcher = (url) => fetch(url).then((res) => res.json());
 
@@ -37,6 +38,7 @@ const DetailsPage = () => {
           <button>🔙</button>
         </Link>
         <h1>{movie.title}</h1>
+        <Bookmark />
         <VideoComponent url={movie.trailer_url} />
         <h2>Description:</h2>
         <StyledText>{movie.overview}</StyledText>
@@ -79,6 +81,7 @@ const DetailsPage = () => {
           <button>🔙</button>
         </Link>
         <h1>{character.name}</h1>
+        <Bookmark />
         <h3>Actor:</h3>
         <p>{character.actor}</p>
         <h3>Description:</h3>
