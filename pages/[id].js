@@ -5,6 +5,8 @@ import VideoComponent from "../components/VideoComponent";
 import Image from "next/image";
 import styled from "styled-components";
 import Bookmark from "../components/Bookmark";
+import { useContext } from "react";
+import BookmarkContext from "../contexts/BookmarkContext";
 
 const fetcher = (url) => fetch(url).then((res) => res.json());
 
@@ -14,6 +16,19 @@ const DetailsPage = () => {
 
   const { data: movies, error } = useSWR(`/api/movies`, fetcher);
   const { data: characters, error2 } = useSWR(`/api/characters`, fetcher);
+
+  const { bookmarks, setBookmarks } = useContext(BookmarkContext);
+
+  const handleBookmark = (item) => {
+    const index = bookmarks.findIndex((b) => b.id === item.id);
+    if (index === -1) {
+      setBookmarks([...bookmarks, item]);
+    } else {
+      const newBookmarks = [...bookmarks];
+      newBookmarks.splice(index, 1);
+      setBookmarks(newBookmarks);
+    }
+  };
 
   if (error || error2) {
     return <div>Failed to load from API</div>;
@@ -34,11 +49,15 @@ const DetailsPage = () => {
 
     return (
       <StyledPage>
-        <Link href="/">
+        <Link href={"/"}>
           <button>🔙</button>
         </Link>
         <h1>{movie.title}</h1>
-        <Bookmark />
+        <Bookmark
+          handleBookmark={handleBookmark}
+          item={movie}
+          isBookmarked={bookmarks.findIndex((b) => b.id === movie.id) !== -1}
+        />
         <VideoComponent url={movie.trailer_url} />
         <h2>Description:</h2>
         <StyledText>{movie.overview}</StyledText>
@@ -81,12 +100,23 @@ const DetailsPage = () => {
           <button>🔙</button>
         </Link>
         <h1>{character.name}</h1>
-        <Bookmark />
+        <Bookmark
+          handleBookmark={handleBookmark}
+          item={character}
+          isBookmarked={
+            bookmarks.findIndex((b) => b.id === character.id) !== -1
+          }
+        />
         <h3>Actor:</h3>
         <p>{character.actor}</p>
         <h3>Description:</h3>
         <StyledText>{character.description}</StyledText>
         <h3>Skills:</h3>
+        <ul>
+          {character.skills.map((skill, index) => (
+            <li key={index}>{skill}</li>
+          ))}
+        </ul>
         <h3>Other Films:</h3>
         <ul>
           {character.movies.map((movie, index) => {

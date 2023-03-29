@@ -14,7 +14,7 @@ export default function MovieList() {
   if (!movies) {
     return <div>Loading...</div>;
   }
-  console.log(movies);
+
   return (
     <StyledCard>
       {movies
