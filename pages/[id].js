@@ -43,7 +43,7 @@ const DetailsPage = () => {
   );
 
   if (movie) {
-    const characterObjects = (movie.characters || []).map((jsonString) =>
+    const characterObjects = movie.characters.map((jsonString) =>
       JSON.parse(jsonString)
     );
 

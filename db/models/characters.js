@@ -3,7 +3,7 @@ import mongoose from "mongoose";
 const { Schema } = mongoose;
 
 const characterSchema = new Schema({
-  id: { type: Number, required: true },
+  id: { type: Number, required: false },
   name: { type: String, required: true },
   overview: { type: String, required: true },
   special_skills: { type: String, required: true },
