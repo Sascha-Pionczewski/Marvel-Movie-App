@@ -20,7 +20,7 @@ const DetailsPage = () => {
   const { bookmarks, setBookmarks } = useContext(BookmarkContext);
 
   const handleBookmark = (item) => {
-    const index = bookmarks.findIndex((b) => b.id === item.id);
+    const index = bookmarks.findIndex((b) => b._id === item._id);
     if (index === -1) {
       setBookmarks([...bookmarks, item]);
     } else {
@@ -56,7 +56,7 @@ const DetailsPage = () => {
         <Bookmark
           handleBookmark={handleBookmark}
           item={movie}
-          isBookmarked={bookmarks.findIndex((b) => b.id === movie.id) !== -1}
+          isBookmarked={bookmarks.findIndex((b) => b._id === movie._id) !== -1}
         />
         <VideoComponent url={movie.trailer_url} />
         <h2>Description:</h2>
@@ -72,7 +72,7 @@ const DetailsPage = () => {
           {movie.related_movies.map((relMovie) => {
             const titleWithMinus = relMovie.title.replace(/ /g, "-");
             return (
-              <Link href={`/${titleWithMinus}`} key={relMovie.id}>
+              <Link href={`/${titleWithMinus}`} key={relMovie._id}>
                 <li>{relMovie.title}</li>
               </Link>
             );
@@ -85,7 +85,7 @@ const DetailsPage = () => {
               .replace(/ /g, "-")
               .replace("/", "");
             return (
-              <Link href={`/${nameWithMinus}`} key={character.id}>
+              <Link href={`/${nameWithMinus}`} key={character._id}>
                 <li>{character.name}</li>
               </Link>
             );
@@ -104,7 +104,7 @@ const DetailsPage = () => {
           handleBookmark={handleBookmark}
           item={character}
           isBookmarked={
-            bookmarks.findIndex((b) => b.id === character.id) !== -1
+            bookmarks.findIndex((b) => b._id === character._id) !== -1
           }
         />
         <h3>Actor:</h3>
