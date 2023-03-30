@@ -6,7 +6,7 @@ export const BookmarkProvider = ({ children }) => {
   const [bookmarks, setBookmarks] = useState();
 
   useEffect(() => {
-    if (typeof window !== "undefined") {
+    if (typeof window !== "undefined" && !bookmarks) {
       const storedBookmarks = localStorage.getItem("bookmarks");
       if (storedBookmarks) {
         try {
@@ -14,6 +14,8 @@ export const BookmarkProvider = ({ children }) => {
         } catch (error) {
           console.error("Error parsing stored bookmarks:", error);
         }
+      } else {
+        setBookmarks([]);
       }
     }
   }, []);
