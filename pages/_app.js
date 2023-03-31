@@ -1,6 +1,7 @@
 import GlobalStyle from "../styles";
 import Head from "next/head";
 import NavBar from "../components/NavBar";
+import { BookmarkProvider } from "../contexts/BookmarkContext";
 
 export default function App({ Component, pageProps }) {
   return (
@@ -9,7 +10,9 @@ export default function App({ Component, pageProps }) {
       <Head>
         <title>Marvel Movie App</title>
       </Head>
-      <Component {...pageProps} />
+      <BookmarkProvider>
+        <Component {...pageProps} />
+      </BookmarkProvider>
       <NavBar />
     </>
   );
