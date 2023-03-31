@@ -35,27 +35,29 @@ const StyledNav = styled.nav`
   left: 0;
   right: 0;
   background-color: white;
-  padding: 10px;
   box-shadow: 0 -1px 5px rgba(0, 0, 0, 0.1);
-  display: flex;
-  justify-content: space-around;
 `;
 
 const StyledList = styled.ul`
   list-style-type: none;
-  display: flex;
-  justify-content: space-between;
-  align-items: stretch;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
   width: 100%;
+  height: 50px;
   padding: 0;
   margin: 0;
 `;
 
 const Button = styled.button`
   padding: 5px 10px;
-  background-color: darkgray;
+  width: 100%;
+  height: 100%;
+  background-color: #202020;
+  border-color: white;
   color: white;
+  font-family: "Bangers";
+  font-size: 18px;
   &.active {
-    background-color: black;
+    background-color: #ae090f;
   }
 `;
