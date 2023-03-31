@@ -1,6 +1,5 @@
 import Link from "next/link";
 import { useRouter } from "next/router";
-import React from "react";
 import styled from "styled-components";
 
 export default function NavBar() {
@@ -42,11 +41,14 @@ const StyledNav = styled.nav`
   justify-content: space-around;
 `;
 
-const StyledList = styled.div`
+const StyledList = styled.ul`
   list-style-type: none;
   display: flex;
-  gap: 20px;
-  margin: 10px;
+  justify-content: space-between;
+  align-items: stretch;
+  width: 100%;
+  padding: 0;
+  margin: 0;
 `;
 
 const Button = styled.button`

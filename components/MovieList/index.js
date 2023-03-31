@@ -1,8 +1,8 @@
 import React from "react";
 import useSWR from "swr";
-import Image from "next/image";
 import Link from "next/link";
 import styled from "styled-components";
+import Card from "../Card.js";
 
 const fetcher = (url) => fetch(url).then((res) => res.json());
 
@@ -16,37 +16,28 @@ export default function MovieList() {
   }
 
   return (
-    <StyledCard>
+    <StyledCardContainer>
       {movies
         .sort((a, b) => a.id - b.id)
         .map((movie) => (
           <>
-            <div>
-              <Link href={`/${movie.title.replace(/ /g, "-")}`} key={movie.id}>
-                <h2>{movie.title}</h2>
-              </Link>
-              <p>{movie.release_date}</p>
-            </div>
-            <div>
-              <Link href={`/${movie.title.replace(/ /g, "-")}`}>
-                <Image
-                  src={movie.cover_url}
-                  height={300}
-                  width={200}
-                  alt={movie.title}
-                />
-              </Link>
-            </div>
+            <Link href={`/${movie.title.replace(/ /g, "-")}`}>
+              <Card
+                key={movie.id}
+                title={movie.title}
+                date={movie.release_date}
+                image={movie.cover_url}
+              />
+            </Link>
           </>
         ))
         .reverse()}
-    </StyledCard>
+    </StyledCardContainer>
   );
 }
 
-const StyledCard = styled.div`
+const StyledCardContainer = styled.div`
   display: flex;
-  flex-direction: column;
-  align-items: center;
-  margin-bottom: 120px;
+  flex-wrap: wrap;
+  justify-content: center;
 `;

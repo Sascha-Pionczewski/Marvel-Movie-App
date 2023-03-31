@@ -1,12 +1,11 @@
 import React from "react";
 import ReactPlayer from "react-player";
-import ComingSoon from "../ComingSoon";
 
 export default function VideoComponent({ url }) {
   if (url === null) {
     return (
       <>
-        <ComingSoon />
+        <h2>trailer is coming soon...!</h2>
       </>
     );
   }
