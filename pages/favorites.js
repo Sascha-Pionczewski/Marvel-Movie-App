@@ -2,6 +2,8 @@ import { useContext } from "react";
 import styled from "styled-components";
 import BookmarkContext from "../contexts/BookmarkContext";
 import FavoritesOverview from "../components/FavoritesOverview";
+import Heading from "../components/Heading";
+import Link from "next/link";
 
 const BookmarksPage = () => {
   const { bookmarks, setBookmarks } = useContext(BookmarkContext);
@@ -16,15 +18,23 @@ const BookmarksPage = () => {
   };
 
   return (
-    <FavoritesOverview bookmarks={bookmarks} handleBookmark={handleBookmark} />
+    <>
+      <Heading>Favorites</Heading>
+      <Link href="/">
+        <button>🔙</button>
+      </Link>
+      <StyledPage>
+        <FavoritesOverview
+          bookmarks={bookmarks}
+          handleBookmark={handleBookmark}
+        />
+      </StyledPage>
+    </>
   );
 };
 
 export default BookmarksPage;
 
 const StyledPage = styled.div`
-  display: flex;
-  flex-direction: column;
-  align-items: center;
   margin-bottom: 120px;
 `;
