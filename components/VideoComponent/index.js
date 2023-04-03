@@ -16,6 +16,8 @@ export default function VideoComponent({ url }) {
           src={url}
           allow="autoplay; fullscreen; picture-in-picture"
           allowFullScreen
+          width="100%"
+          height="auto"
         />
       </>
     );

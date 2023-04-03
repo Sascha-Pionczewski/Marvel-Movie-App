@@ -5,7 +5,8 @@ const Heading = styled.h1`
   font-family: "Bangers";
   background-color: #ae090f;
   color: white;
-  margin-top: 0;
+  margin: 0;
   padding: 10px;
+  border: 2px solid black;
 `;
 export default Heading;

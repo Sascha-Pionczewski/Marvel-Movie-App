@@ -4,6 +4,7 @@ import BookmarkContext from "../contexts/BookmarkContext";
 import FavoritesOverview from "../components/FavoritesOverview";
 import Heading from "../components/Heading";
 import Link from "next/link";
+import Image from "next/image";
 
 const BookmarksPage = () => {
   const { bookmarks, setBookmarks } = useContext(BookmarkContext);
@@ -21,7 +22,12 @@ const BookmarksPage = () => {
     <>
       <Heading>Favorites</Heading>
       <Link href="/">
-        <button>🔙</button>
+        <StyledImage
+          src="/left-arrow-back-svgrepo-com.svg"
+          alt="back"
+          width={30}
+          height={30}
+        />
       </Link>
       <StyledPage>
         <FavoritesOverview
@@ -37,4 +43,9 @@ export default BookmarksPage;
 
 const StyledPage = styled.div`
   margin-bottom: 120px;
+`;
+
+const StyledImage = styled(Image)`
+  margin-left: 10px;
+  margin-top: -10px;
 `;
