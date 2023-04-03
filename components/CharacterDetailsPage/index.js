@@ -53,7 +53,7 @@ const StyledPage = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin-bottom: 120px;
+  margin-bottom: 80px;
 `;
 
 const StyledText = styled.p`
