@@ -54,11 +54,14 @@ const DetailsPage = () => {
     );
   } else if (character) {
     return (
-      <CharacterDetailsPage
-        character={character}
-        bookmarks={bookmarks}
-        handleBookmark={handleBookmark}
-      />
+      <>
+        <CharacterDetailsPage
+          character={character}
+          bookmarks={bookmarks}
+          handleBookmark={handleBookmark}
+          actorName={character.actor}
+        />
+      </>
     );
   } else {
     return (
