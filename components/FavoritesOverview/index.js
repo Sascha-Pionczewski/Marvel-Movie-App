@@ -1,16 +1,12 @@
-import Image from "next/image";
 import Link from "next/link";
 import styled from "styled-components";
 import Bookmark from "../Bookmark";
+import Card from "../Card.js";
 
 export default function FavoritesOverview({ bookmarks, handleBookmark }) {
   return (
-    <StyledPage>
-      <h1>Favorites</h1>
-      <Link href="/">
-        <button>🔙</button>
-      </Link>
-      <ul>
+    <>
+      <StyledList>
         {bookmarks &&
           bookmarks.map((item) => {
             if (!item || (!item.title && !item.name)) {
@@ -23,50 +19,51 @@ export default function FavoritesOverview({ bookmarks, handleBookmark }) {
             if (item.cover_url) {
               return (
                 <li key={item._id}>
-                  <Link href={linkPath}>
-                    <p>{itemName}</p>
-                  </Link>
-                  <Bookmark
-                    handleBookmark={handleBookmark}
-                    item={item}
-                    isBookmarked={true}
-                  />
-                  <Image
-                    src={item.cover_url}
-                    alt={itemName}
-                    width={200}
-                    height={300}
-                  />
+                  <CardContainer>
+                    <Bookmark
+                      handleBookmark={handleBookmark}
+                      item={item}
+                      isBookmarked={true}
+                    />
+                    <Link href={linkPath}>
+                      <Card title={itemName} image={item.cover_url} />
+                    </Link>
+                  </CardContainer>
                 </li>
               );
             }
             if (!item.cover_url) {
               return (
                 <li key={item._id}>
-                  <Link href={linkPath}>
-                    <p>{itemName}</p>
-                  </Link>
-                  <Bookmark
-                    handleBookmark={handleBookmark}
-                    item={item}
-                    isBookmarked={true}
-                  />
+                  <CardContainer>
+                    <Bookmark
+                      handleBookmark={handleBookmark}
+                      item={item}
+                      isBookmarked={true}
+                    />
+                    <Link href={linkPath}>
+                      <p>{itemName}</p>
+                    </Link>
+                  </CardContainer>
                 </li>
               );
             }
           })}
-      </ul>
-    </StyledPage>
+      </StyledList>
+    </>
   );
 }
 
-const StyledPage = styled.div`
+const StyledList = styled.ul`
   display: flex;
   flex-direction: column;
+  list-style-type: none;
+  margin: 0px;
+  padding: 0px;
   align-items: center;
-  margin-bottom: 120px;
 `;
 
-const StyledText = styled.p`
-  margin: 30px;
+const CardContainer = styled.div`
+  position: relative;
+  display: inline-block;
 `;

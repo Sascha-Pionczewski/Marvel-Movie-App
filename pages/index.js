@@ -14,5 +14,5 @@ export default function Home() {
 }
 
 const StyledDiv = styled.div`
-  margin-bottom: 120px;
+  margin-bottom: 80px;
 `;

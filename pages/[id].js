@@ -5,6 +5,7 @@ import { useContext } from "react";
 import BookmarkContext from "../contexts/BookmarkContext";
 import MovieDetailsPage from "../components/MovieDetailsPage";
 import CharacterDetailsPage from "../components/CharacterDetailsPage";
+import Heading from "../components/Heading";
 
 const fetcher = (url) => fetch(url).then((res) => res.json());
 
@@ -42,11 +43,14 @@ const DetailsPage = () => {
 
   if (movie) {
     return (
-      <MovieDetailsPage
-        movie={movie}
-        bookmarks={bookmarks}
-        handleBookmark={handleBookmark}
-      />
+      <>
+        <Heading>{movie.title}</Heading>
+        <MovieDetailsPage
+          movie={movie}
+          bookmarks={bookmarks}
+          handleBookmark={handleBookmark}
+        />
+      </>
     );
   } else if (character) {
     return (

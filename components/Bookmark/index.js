@@ -7,20 +7,20 @@ export default function Bookmark({ handleBookmark, item, isBookmarked }) {
   }
 
   return (
-    <StyledButton onClick={handleClick}>
-      <Image
-        src={
-          isBookmarked ? "/star-svgrepo-com (2).svg" : "/star-1-svgrepo-com.svg"
-        }
-        alt="bookmark"
-        width={40}
-        height={60}
-      />
-    </StyledButton>
+    <StyledImage
+      src={
+        isBookmarked ? "/star-svgrepo-com (3).svg" : "/star-1-svgrepo-com.svg"
+      }
+      alt="bookmark"
+      width={40}
+      height={40}
+      onClick={handleClick}
+    />
   );
 }
 
-const StyledButton = styled.button`
-  border: none;
-  background-color: white;
+const StyledImage = styled(Image)`
+  position: absolute;
+  top: 20px;
+  right: 20px;
 `;
