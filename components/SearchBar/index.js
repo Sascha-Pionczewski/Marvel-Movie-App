@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-const SearchBar = ({ onSearch }) => {
+const SearchBar = ({ value, onSearch }) => {
   const handleInputChange = (event) => {
     onSearch(event.target.value);
   };
