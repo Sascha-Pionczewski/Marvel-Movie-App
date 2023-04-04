@@ -2,6 +2,7 @@ import Link from "next/link";
 import styled from "styled-components";
 import Bookmark from "../Bookmark";
 import Card from "../Card.js";
+import ActorImage from "../ActorImage";
 
 export default function FavoritesOverview({ bookmarks, handleBookmark }) {
   return (
@@ -42,7 +43,7 @@ export default function FavoritesOverview({ bookmarks, handleBookmark }) {
                       isBookmarked={true}
                     />
                     <Link href={linkPath}>
-                      <p>{itemName}</p>
+                      <ActorImage actorName={item.actor} />
                     </Link>
                   </CardContainer>
                 </li>
