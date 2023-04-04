@@ -2,22 +2,21 @@ import { useEffect, useState } from "react";
 import Card from "../Card.js";
 
 const ActorImage = ({ actorName }) => {
-  const API_KEY = process.env.NEXT_PUBLIC_TMDB_API_KEY;
   const [imageUrl, setImageUrl] = useState(null);
 
   useEffect(() => {
     const fetchImage = async () => {
       try {
-        const searchUrl = `https://api.themoviedb.org/3/search/person?api_key=${API_KEY}&query=${actorName}`;
+        const searchUrl = `/api/themoviedb/search/person?query=${actorName}`;
         const searchResponse = await fetch(searchUrl);
         const searchData = await searchResponse.json();
         const personId = searchData.results[0].id;
 
-        const imagesUrl = `https://api.themoviedb.org/3/person/${personId}/images?api_key=${API_KEY}`;
+        const imagesUrl = `/api/themoviedb/person/${personId}/images?`;
         const imagesResponse = await fetch(imagesUrl);
         const imagesData = await imagesResponse.json();
 
-        const configUrl = `https://api.themoviedb.org/3/configuration?api_key=${API_KEY}`;
+        const configUrl = `/api/themoviedb/configuration?`;
         const configResponse = await fetch(configUrl);
         const configData = await configResponse.json();
 
@@ -36,7 +35,7 @@ const ActorImage = ({ actorName }) => {
       }
     };
     fetchImage();
-  }, [API_KEY, actorName]);
+  }, [actorName]);
 
   if (!imageUrl) {
     return <div>sorry no image!</div>;
