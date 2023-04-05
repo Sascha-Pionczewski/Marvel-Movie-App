@@ -22,7 +22,9 @@ export default function MovieList() {
     return <div>Loading...</div>;
   }
 
-  const filteredMovies = movies.filter((movie) =>
+  const sortMovies = movies.sort((a, b) => a.id - b.id);
+
+  const filteredMovies = sortMovies.filter((movie) =>
     normalizeText(movie.title).includes(normalizeText(searchText))
   );
 
@@ -31,7 +33,6 @@ export default function MovieList() {
       <SearchBar onSearch={setSearchText} />
       <StyledCardContainer>
         {filteredMovies
-          .sort((a, b) => a.id - b.id)
           .map((movie) => (
             <>
               <Link href={`/${movie.title.replace(/ /g, "-")}`}>
