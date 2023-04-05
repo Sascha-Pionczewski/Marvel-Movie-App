@@ -5,7 +5,7 @@ import styled from "styled-components";
 import Card from "../Card.js";
 import RelatedMoviesCard from "../RelatedMoviesCard";
 import Backbutton from "../Backbutton";
-import ActorImage from "../ActorImage";
+import ActorImageSmall from "../ActorImageSmall";
 
 export default function MovieDetailsPage({
   movie,
@@ -51,7 +51,7 @@ export default function MovieDetailsPage({
           })}
         </RelatedMoviesContainer>
         <h3>Characters</h3>
-        <ul>
+        <RelatedMoviesContainer>
           {characterObjects.map((character) => {
             const nameWithMinus = character.name
               .replace(/ /g, "-")
@@ -63,11 +63,11 @@ export default function MovieDetailsPage({
             const actorName = foundCharacter ? foundCharacter.actor : "";
             return (
               <Link href={`/${nameWithMinus}`} key={character._id}>
-                <ActorImage actorName={actorName} />
+                <ActorImageSmall actorName={actorName} />
               </Link>
             );
           })}
-        </ul>
+        </RelatedMoviesContainer>
       </StyledPageContainer>
     </>
   );
