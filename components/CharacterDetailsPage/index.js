@@ -3,6 +3,7 @@ import styled from "styled-components";
 import Bookmark from "../Bookmark";
 import ActorImage from "../ActorImage";
 import Heading from "../Heading";
+import Backbutton from "../Backbutton";
 
 export default function CharacterDetailsPage({
   character,
@@ -14,6 +15,7 @@ export default function CharacterDetailsPage({
     <>
       <Heading>{character.name}</Heading>
       <StyledPage>
+        <Backbutton />
         <CardContainer>
           <Bookmark
             handleBookmark={handleBookmark}
@@ -54,6 +56,7 @@ const StyledPage = styled.div`
   flex-direction: column;
   align-items: center;
   margin-bottom: 80px;
+  position: relative;
 `;
 
 const StyledText = styled.p`
