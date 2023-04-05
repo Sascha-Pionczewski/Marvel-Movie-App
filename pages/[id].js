@@ -49,6 +49,7 @@ const DetailsPage = () => {
           movie={movie}
           bookmarks={bookmarks}
           handleBookmark={handleBookmark}
+          charactersIn={characters}
         />
       </>
     );

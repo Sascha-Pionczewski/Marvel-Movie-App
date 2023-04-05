@@ -5,8 +5,14 @@ import styled from "styled-components";
 import Card from "../Card.js";
 import RelatedMoviesCard from "../RelatedMoviesCard";
 import Backbutton from "../Backbutton";
+import ActorImage from "../ActorImage";
 
-export default function MovieDetailsPage({ movie, bookmarks, handleBookmark }) {
+export default function MovieDetailsPage({
+  movie,
+  bookmarks,
+  handleBookmark,
+  charactersIn,
+}) {
   const characterObjects = movie.characters.map((jsonString) =>
     JSON.parse(jsonString)
   );
@@ -50,9 +56,14 @@ export default function MovieDetailsPage({ movie, bookmarks, handleBookmark }) {
             const nameWithMinus = character.name
               .replace(/ /g, "-")
               .replace("/", "");
+            const foundCharacter = charactersIn.find(
+              (c) => c.name === character.name
+            );
+
+            const actorName = foundCharacter ? foundCharacter.actor : "";
             return (
               <Link href={`/${nameWithMinus}`} key={character._id}>
-                <li>{character.name}</li>
+                <ActorImage actorName={actorName} />
               </Link>
             );
           })}
