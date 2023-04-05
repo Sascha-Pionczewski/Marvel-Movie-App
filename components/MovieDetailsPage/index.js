@@ -1,10 +1,10 @@
-import Image from "next/image";
 import Link from "next/link";
 import Bookmark from "../Bookmark";
 import VideoComponent from "../VideoComponent";
 import styled from "styled-components";
 import Card from "../Card.js";
 import RelatedMoviesCard from "../RelatedMoviesCard";
+import Backbutton from "../Backbutton";
 
 export default function MovieDetailsPage({ movie, bookmarks, handleBookmark }) {
   const characterObjects = movie.characters.map((jsonString) =>
@@ -15,9 +15,11 @@ export default function MovieDetailsPage({ movie, bookmarks, handleBookmark }) {
     <>
       <StyledPageContainer>
         <VideoComponent url={movie.trailer_url} />
-        <h2>Description:</h2>
-        <StyledText>{movie.overview}</StyledText>
-
+        <StyledDescription>
+          <Backbutton />
+          <h2>Description:</h2>
+          <p>{movie.overview}</p>
+        </StyledDescription>
         <CardContainer>
           <Bookmark
             handleBookmark={handleBookmark}
@@ -67,10 +69,6 @@ const StyledPageContainer = styled.div`
   margin-bottom: 120px;
 `;
 
-const StyledText = styled.p`
-  margin: 0px 30px;
-`;
-
 const CardContainer = styled.div`
   position: relative;
 `;
@@ -80,4 +78,12 @@ const RelatedMoviesContainer = styled.ul`
   margin: 0px 10px;
   padding: 0px;
   width: 350px;
+`;
+
+const StyledDescription = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+  width: 320px;
 `;
