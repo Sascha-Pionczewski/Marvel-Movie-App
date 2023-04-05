@@ -60,6 +60,7 @@ const DetailsPage = () => {
           bookmarks={bookmarks}
           handleBookmark={handleBookmark}
           actorName={character.actor}
+          movieIn={movies}
         />
       </>
     );

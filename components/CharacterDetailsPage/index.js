@@ -4,12 +4,14 @@ import Bookmark from "../Bookmark";
 import ActorImage from "../ActorImage";
 import Heading from "../Heading";
 import Backbutton from "../Backbutton";
+import Image from "next/image";
 
 export default function CharacterDetailsPage({
   character,
   bookmarks,
   handleBookmark,
   actorName,
+  movieIn,
 }) {
   return (
     <>
@@ -39,9 +41,11 @@ export default function CharacterDetailsPage({
         <ul>
           {character.movies.map((movie, index) => {
             const titleWithMinus = movie.replace(/ /g, "-");
+            const foundMovie = movieIn.find((m) => m.title === movie);
+            const coverUrl = foundMovie ? foundMovie.cover_url : "";
             return (
               <Link href={`/${titleWithMinus}`} key={index}>
-                <li key={index}>{movie}</li>
+                <Image src={coverUrl} alt={movie} width={110} height={170} />
               </Link>
             );
           })}
