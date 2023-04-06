@@ -6,7 +6,7 @@ export const BookmarkProvider = ({ children }) => {
   const [bookmarks, setBookmarks] = useState();
 
   useEffect(() => {
-    if (typeof window !== "undefined" && !bookmarks) {
+    if (typeof window !== "undefined" && bookmarks === undefined) {
       const storedBookmarks = localStorage.getItem("bookmarks");
       if (storedBookmarks) {
         try {
@@ -18,10 +18,12 @@ export const BookmarkProvider = ({ children }) => {
         setBookmarks([]);
       }
     }
-  }, []);
+  }, [bookmarks]);
 
   useEffect(() => {
-    localStorage.setItem("bookmarks", JSON.stringify(bookmarks));
+    if (bookmarks !== undefined) {
+      localStorage.setItem("bookmarks", JSON.stringify(bookmarks));
+    }
   }, [bookmarks]);
 
   return (

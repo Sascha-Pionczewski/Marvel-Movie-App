@@ -33,11 +33,10 @@ export default function MovieList() {
       <SearchBar onSearch={setSearchText} />
       <StyledCardContainer>
         {filteredMovies
-          .map((movie) => (
+          .map((movie, index) => (
             <>
-              <Link href={`/${movie.title.replace(/ /g, "-")}`}>
+              <Link href={`/${movie.title.replace(/ /g, "-")}`} key={index}>
                 <Card
-                  key={movie.id}
                   title={movie.title}
                   date={movie.release_date}
                   image={movie.cover_url}

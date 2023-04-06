@@ -31,17 +31,17 @@ export default function MovieDetailsPage({
             handleBookmark={handleBookmark}
             item={movie}
             isBookmarked={
-              bookmarks.findIndex((b) => b._id === movie._id) !== -1
+              bookmarks?.findIndex((b) => b._id === movie._id) !== -1
             }
           />
           <Card image={movie.cover_url} title={movie.title} />
         </CardContainer>
         <h3>Related Movies</h3>
         <RelatedMoviesContainer>
-          {movie.related_movies.map((relMovie) => {
+          {movie.related_movies.map((relMovie, index) => {
             const titleWithMinus = relMovie.title.replace(/ /g, "-");
             return (
-              <Link href={`/${titleWithMinus}`} key={relMovie._id}>
+              <Link href={`/${titleWithMinus}`} key={index}>
                 <RelatedMoviesCard
                   image={relMovie.cover_url}
                   title={relMovie.title}
@@ -52,7 +52,7 @@ export default function MovieDetailsPage({
         </RelatedMoviesContainer>
         <h3>Characters</h3>
         <RelatedMoviesContainer>
-          {characterObjects.map((character) => {
+          {characterObjects.map((character, index) => {
             const nameWithMinus = character.name
               .replace(/ /g, "-")
               .replace("/", "");
@@ -62,7 +62,7 @@ export default function MovieDetailsPage({
 
             const actorName = foundCharacter ? foundCharacter.actor : "";
             return (
-              <Link href={`/${nameWithMinus}`} key={character._id}>
+              <Link href={`/${nameWithMinus}`} key={index}>
                 <ActorImageSmall actorName={actorName} />
               </Link>
             );

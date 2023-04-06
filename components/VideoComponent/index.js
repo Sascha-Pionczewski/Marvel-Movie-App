@@ -1,4 +1,3 @@
-import React from "react";
 import ReactPlayer from "react-player";
 
 export default function VideoComponent({ url }) {
@@ -15,7 +14,6 @@ export default function VideoComponent({ url }) {
         <iframe
           src={url}
           allow="autoplay; fullscreen; picture-in-picture"
-          allowFullScreen
           width="100%"
           height="auto"
         />
