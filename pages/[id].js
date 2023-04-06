@@ -49,6 +49,7 @@ const DetailsPage = () => {
           movie={movie}
           bookmarks={bookmarks}
           handleBookmark={handleBookmark}
+          charactersIn={characters}
         />
       </>
     );
@@ -60,6 +61,7 @@ const DetailsPage = () => {
           bookmarks={bookmarks}
           handleBookmark={handleBookmark}
           actorName={character.actor}
+          movieIn={movies}
         />
       </>
     );

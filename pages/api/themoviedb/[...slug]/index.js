@@ -11,7 +11,6 @@ async function handler(req, res) {
         api_key: process.env.API_KEY,
         ...query,
       }).toString();
-    console.log(url);
     const response = await fetch(url);
     if (response.ok) {
       const data = await response.json();

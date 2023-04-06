@@ -4,12 +4,14 @@ import Bookmark from "../Bookmark";
 import ActorImage from "../ActorImage";
 import Heading from "../Heading";
 import Backbutton from "../Backbutton";
+import RelatedMoviesCard from "../RelatedMoviesCard";
 
 export default function CharacterDetailsPage({
   character,
   bookmarks,
   handleBookmark,
   actorName,
+  movieIn,
 }) {
   return (
     <>
@@ -35,17 +37,19 @@ export default function CharacterDetailsPage({
             <li key={index}>{skill}</li>
           ))}
         </ul>
-        <h3>Other Films:</h3>
-        <ul>
+        <h3>Other Movies:</h3>
+        <OtherMoviesContainer>
           {character.movies.map((movie, index) => {
             const titleWithMinus = movie.replace(/ /g, "-");
+            const foundMovie = movieIn.find((m) => m.title === movie);
+            const coverUrl = foundMovie ? foundMovie.cover_url : "";
             return (
               <Link href={`/${titleWithMinus}`} key={index}>
-                <li key={index}>{movie}</li>
+                <RelatedMoviesCard image={coverUrl} title={movie} />
               </Link>
             );
           })}
-        </ul>
+        </OtherMoviesContainer>
       </StyledPage>
     </>
   );
@@ -65,4 +69,11 @@ const StyledText = styled.p`
 
 const CardContainer = styled.div`
   position: relative;
+`;
+
+const OtherMoviesContainer = styled.ul`
+  list-style: none;
+  margin: 0px 10px;
+  padding: 0px;
+  width: 350px;
 `;
