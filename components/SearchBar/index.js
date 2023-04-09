@@ -32,7 +32,7 @@ const SearchBar = ({ value, onSearch }) => {
 export default SearchBar;
 
 const StyledInput = styled.input`
-  width: 90vw;
+  width: 75vw;
   max-width: 400px;
   padding: 10px 20px;
   margin: 20px 0 10px 0;
