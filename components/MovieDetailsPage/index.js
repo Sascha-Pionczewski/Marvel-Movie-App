@@ -6,6 +6,7 @@ import Card from "../Card.js";
 import RelatedMoviesCard from "../RelatedMoviesCard";
 import Backbutton from "../Backbutton";
 import ActorImageSmall from "../ActorImageSmall";
+import Rating from "../Rating";
 
 export default function MovieDetailsPage({
   movie,
@@ -24,6 +25,7 @@ export default function MovieDetailsPage({
         <StyledDescription>
           <Backbutton />
           <h2>Description:</h2>
+          <Rating movieId={movie._id} />
           <p>{movie.overview}</p>
         </StyledDescription>
         <CardContainer>
