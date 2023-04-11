@@ -2,10 +2,11 @@ import Link from "next/link";
 import Bookmark from "../Bookmark";
 import VideoComponent from "../VideoComponent";
 import styled from "styled-components";
-import Card from "../Card.js";
+import FavoritesCard from "../FavoritesCard";
 import RelatedMoviesCard from "../RelatedMoviesCard";
 import Backbutton from "../Backbutton";
 import ActorImageSmall from "../ActorImageSmall";
+import Rating from "../Rating";
 
 export default function MovieDetailsPage({
   movie,
@@ -24,6 +25,9 @@ export default function MovieDetailsPage({
         <StyledDescription>
           <Backbutton />
           <h2>Description:</h2>
+          <StyledDiv>
+            <Rating movieId={movie._id} />
+          </StyledDiv>
           <p>{movie.overview}</p>
         </StyledDescription>
         <CardContainer>
@@ -34,7 +38,7 @@ export default function MovieDetailsPage({
               bookmarks?.findIndex((b) => b._id === movie._id) !== -1
             }
           />
-          <Card image={movie.cover_url} title={movie.title} />
+          <FavoritesCard image={movie.cover_url} title={movie.title} />
         </CardContainer>
         <h3>Related Movies</h3>
         <RelatedMoviesContainer>
@@ -97,4 +101,8 @@ const StyledDescription = styled.div`
   align-items: center;
   position: relative;
   width: 320px;
+`;
+
+const StyledDiv = styled.div`
+  position: relative;
 `;

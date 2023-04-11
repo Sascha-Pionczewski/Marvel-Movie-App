@@ -1,8 +1,9 @@
 import Link from "next/link";
 import styled from "styled-components";
 import Bookmark from "../Bookmark";
-import Card from "../Card.js";
+import FavoritesCard from "../FavoritesCard";
 import ActorImage from "../ActorImage";
+import Rating from "../Rating";
 
 export default function FavoritesOverview({ bookmarks, handleBookmark }) {
   return (
@@ -27,8 +28,11 @@ export default function FavoritesOverview({ bookmarks, handleBookmark }) {
                       isBookmarked={true}
                     />
                     <Link href={linkPath}>
-                      <Card title={itemName} image={item.cover_url} />
+                      <FavoritesCard title={itemName} image={item.cover_url} />
                     </Link>
+                    <RaitingContainer>
+                      <Rating movieId={item._id} />
+                    </RaitingContainer>
                   </CardContainer>
                 </li>
               );
@@ -67,4 +71,10 @@ const StyledList = styled.ul`
 const CardContainer = styled.div`
   position: relative;
   display: inline-block;
+`;
+
+const RaitingContainer = styled.div`
+  position: absolute;
+  bottom: 20px;
+  left: 30px;
 `;
