@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import styled from "styled-components";
 
 const Rating = ({ movieId }) => {
   const getInitialRating = () => {
@@ -26,7 +27,7 @@ const Rating = ({ movieId }) => {
   };
 
   return (
-    <div>
+    <>
       {[1, 2, 3, 4, 5].map((star) => (
         <span
           key={star}
@@ -41,7 +42,7 @@ const Rating = ({ movieId }) => {
           ★
         </span>
       ))}
-    </div>
+    </>
   );
 };
 

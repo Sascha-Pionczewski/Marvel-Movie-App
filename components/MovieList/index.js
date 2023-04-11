@@ -32,6 +32,15 @@ export default function MovieList() {
   return (
     <>
       <SearchBar onSearch={setSearchText} />
+      <StyledHeading>
+        <h3>Welcome to the Marvel Movie Universe App!</h3>
+        <p>
+          Embark on a thrilling adventure through the world of your favorite
+          superheroes and villains. Explore the epic stories, iconic characters,
+          and stunning visuals that make the Marvel Cinematic Universe a global
+          phenomenon.
+        </p>
+      </StyledHeading>
       <StyledCardContainer>
         {filteredMovies
           .map((movie, index) => (
@@ -55,4 +64,8 @@ const StyledCardContainer = styled.div`
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
+`;
+
+const StyledHeading = styled.div`
+  margin: 0 30px;
 `;

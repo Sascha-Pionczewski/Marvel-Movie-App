@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-export default function Card({ title, image }) {
+export default function FavoritesCard({ title, image }) {
   return (
     <CardContainer>
       <CardImage src={image} alt={title} />
@@ -12,7 +12,7 @@ const CardContainer = styled.div`
   display: flex;
   flex-direction: column;
   text-align: center;
-  width: 145px;
+  width: 250px;
   border-radius: 12px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   overflow: hidden;
@@ -21,6 +21,6 @@ const CardContainer = styled.div`
 
 const CardImage = styled.img`
   width: 100%;
-  height: 215px;
+  height: 375px;
   object-fit: cover;
 `;

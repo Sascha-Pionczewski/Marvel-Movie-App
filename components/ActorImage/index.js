@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import Card from "../Card.js";
+import FavoritesCard from "../FavoritesCard";
 
 const ActorImage = ({ actorName }) => {
   const [imageUrl, setImageUrl] = useState(null);
@@ -41,7 +41,7 @@ const ActorImage = ({ actorName }) => {
     return <div>sorry no image!</div>;
   }
 
-  return <Card image={imageUrl} title={`${actorName}`} />;
+  return <FavoritesCard image={imageUrl} title={`${actorName}`} />;
 };
 
 export default ActorImage;
