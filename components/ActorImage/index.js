@@ -31,14 +31,14 @@ const ActorImage = ({ actorName }) => {
         setImageUrl(fullImageUrl);
       } catch (error) {
         console.error("Error fetching actor image:", error);
-        setImageUrl("/pngegg.png");
+        setImageUrl("/captain-america-mini.png");
       }
     };
     fetchImage();
   }, [actorName]);
 
   if (!imageUrl) {
-    return <div>sorry no image!</div>;
+    return <p>sorry no image!</p>;
   }
 
   return <FavoritesCard image={imageUrl} title={`${actorName}`} />;
