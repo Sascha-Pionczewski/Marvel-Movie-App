@@ -65,6 +65,7 @@ const StyledPage = styled.div`
 
 const StyledText = styled.p`
   margin: 30px;
+  width: 320px;
 `;
 
 const CardContainer = styled.div`
