@@ -15,7 +15,7 @@ export default function VideoComponent({ url }) {
           src={url}
           allow="autoplay; fullscreen; picture-in-picture"
           width="100%"
-          height="auto"
+          height="200px"
         />
       </>
     );
@@ -23,7 +23,7 @@ export default function VideoComponent({ url }) {
   if (!url.includes("players.brightcove.net")) {
     return (
       <>
-        <ReactPlayer url={url} width="100%" height="auto" controls={true} />
+        <ReactPlayer url={url} width="100%" height="200px" controls={true} />
       </>
     );
   }

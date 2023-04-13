@@ -38,7 +38,7 @@ const ActorImage = ({ actorName }) => {
   }, [actorName]);
 
   if (!imageUrl) {
-    return <div>sorry no image!</div>;
+    return <p>sorry no image!</p>;
   }
 
   return <FavoritesCard image={imageUrl} title={`${actorName}`} />;
