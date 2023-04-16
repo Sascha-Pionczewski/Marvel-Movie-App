@@ -4,7 +4,6 @@ import Link from "next/link";
 import styled from "styled-components";
 import Card from "../Card.js";
 import SearchBar from "../SearchBar/index.js";
-import Rating from "../Rating/index.js";
 
 const fetcher = (url) => fetch(url).then((res) => res.json());
 
