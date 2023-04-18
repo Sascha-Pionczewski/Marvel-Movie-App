@@ -2,9 +2,8 @@ import React, { useState } from "react";
 import useSWR from "swr";
 import Link from "next/link";
 import styled from "styled-components";
-import Card from "../Card.js";
+import Card from "../Card.js/index.js";
 import SearchBar from "../SearchBar/index.js";
-import Rating from "../Rating/index.js";
 
 const fetcher = (url) => fetch(url).then((res) => res.json());
 
@@ -44,15 +43,15 @@ export default function MovieList() {
       <StyledCardContainer>
         {filteredMovies
           .map((movie, index) => (
-            <>
-              <Link href={`/${movie.title.replace(/ /g, "-")}`} key={index}>
+            <React.Fragment key={movie.id || index}>
+              <Link href={`/${movie.title.replace(/ /g, "-")}`}>
                 <Card
                   title={movie.title}
                   date={movie.release_date}
                   image={movie.cover_url}
                 />
               </Link>
-            </>
+            </React.Fragment>
           ))
           .reverse()}
       </StyledCardContainer>

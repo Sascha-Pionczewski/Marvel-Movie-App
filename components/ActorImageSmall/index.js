@@ -38,7 +38,7 @@ const ActorImageSmall = ({ actorName }) => {
   }, [actorName]);
 
   if (!imageUrl) {
-    return <div>sorry no image!</div>;
+    return <p>sorry no image!</p>;
   }
 
   return <RelatedMoviesCard image={imageUrl} title={`${actorName}`} />;

@@ -13,7 +13,12 @@ export default function Settings() {
       <StyledSettingsContainer>
         <Backbutton />
         <h2>Dark Mode:</h2>
-        <StyledInput type="checkbox" id="toggle" onClick={toggleTheme} />
+        <StyledInput
+          type="checkbox"
+          data-testid="toggle"
+          id="toggle"
+          onClick={toggleTheme}
+        />
         <StyledLabel htmlFor="toggle"></StyledLabel>
       </StyledSettingsContainer>
     </>
